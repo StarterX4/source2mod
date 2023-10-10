@@ -52,6 +52,11 @@ Mock = {
   'mac': ['x86_64']
 }
 
+Source2 = {
+  'windows': ['x86_64'],
+  'linux': ['x86_64'],
+}
+
 SDKMap = {
   'episode1':  SDK('HL2SDK', '2.ep1', '1', 'EPISODEONE', WinLinux, 'episode1'),
   'ep2':  SDK('HL2SDKOB', '2.ep2', '3', 'ORANGEBOX', WinLinux, 'orangebox'),
@@ -77,6 +82,7 @@ SDKMap = {
   'doi':  SDK('HL2SDKDOI', '2.doi', '20', 'DOI', WinLinuxMac, 'doi'),
   'mock': SDK('HL2SDK-MOCK', '2.mock', '999', 'MOCK', Mock, 'mock'),
   'pvkii': SDK('HL2SDKPVKII', '2.pvkii', '10', 'PVKII', WinLinux, 'pvkii'),
+  'cs2': SDK('HL2SDKCS2', '2.cs2', '25', 'CS2', Source2, 'cs2'),
 }
 
 # Stable sorting for command equivalence in AMBuild.
@@ -417,6 +423,9 @@ class SMConfig(object):
       'odbc32.lib',
       'odbccp32.lib',
     ]
+
+ if sdk.name in ['dota', 'cs2']:
+      compiler.defines += ['META_IS_SOURCE2']
 
     if builder.options.opt == '1':
       cxx.cflags += ['/Ox', '/Zo']
