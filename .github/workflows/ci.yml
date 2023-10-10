@@ -12,11 +12,8 @@ jobs:
   test:
     strategy:
       matrix:
-        os: [ubuntu-20.04, ubuntu-latest, windows-latest]
+        os: [ubuntu-20.04, ubuntu-latest]
         include:
-          - os: windows-latest
-            os_short: win
-            compiler_cc: msvc
           - os: ubuntu-latest
             os_short: linux
             compiler_cc: clang
@@ -29,7 +26,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     name: ${{ matrix.os_short }}-${{ matrix.compiler_cc }}
     env:
-      SDKS: '["episode1","css","tf2","l4d2","csgo"]'
+      SDKS: '["cs2"]'
       ARCH: x86,x86_64
       DEPENDENCIES_FOLDER: dependencies
       DEPENDENCIES_ROOT: ${{ github.workspace }}/dependencies
