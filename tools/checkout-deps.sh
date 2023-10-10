@@ -126,7 +126,7 @@ if [ -z ${sdks+x} ]; then
 
   if [ $ismac -eq 0 ]; then
     # Add these SDKs for Windows or Linux
-    sdks+=( orangebox blade episode1 bms pvkii )
+    sdks+=( orangebox blade episode1 bms pvkii cs2 )
 
     # Add more SDKs for Windows only
     if [ $iswin -eq 1 ]; then
